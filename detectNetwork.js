@@ -24,11 +24,21 @@ var detectNetwork = function(cardNumber) {
   if ((cardNumber.length === 15) && (cardNumber[0] === '3') && (cardNumber[1] === '4' || cardNumber[1] === '7')) {
 	  networkName = "American Express";
   }
-  if ((cardNumber.length === 16) && (cardNumber[0] === '5') && (cardNumber[1] === '1' || cardNumber[1] === '2' || cardNumber[1] === '3' || cardNumber[1] === '4' || cardNumber[1] === '5')) {
+  if ((cardNumber.length === 16) && (cardNumber[0] === '5') && (cardNumber[1] === '1' || cardNumber[1] === '2' 
+	|| cardNumber[1] === '3' || cardNumber[1] === '4' || cardNumber[1] === '5')) {
 	  networkName = "MasterCard";
   }
   if ((cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19) && (cardNumber[0] === '4')) {
 	  networkName = "Visa";
+  }
+  if ((cardNumber.length === 16 || cardNumber.length === 19) && (cardNumber.slice(0,4) === '6011' || cardNumber.slice(0,2) == '65'
+	|| cardNumber.slice(0,3) === '644' || cardNumber.slice(0,3) === '645' || cardNumber.slice(0,3) === '646' || cardNumber.slice(0,3) === '647'
+	|| cardNumber.slice(0,3) === '648' || cardNumber.slice(0,3) === '649')) {
+	  networkName = "Discover";
+  }
+  if ((cardNumber.length >= 12 && cardNumber.length <= 19) && (cardNumber.slice(0,4) === '5018' || cardNumber.slice(0,4) === '5020'
+	|| cardNumber.slice(0,4) === '5038' || cardNumber.slice(0,4) === '6304')) {
+	  networkName = "Maestro";
   }
   
   //console.log(networkName);
